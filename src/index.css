@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
+    /* Ensure dark mode works */
+    @apply transition-colors duration-300;
+  }
+
+  body {
+    @apply antialiased;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: inherit;
+    line-height: inherit;
+    /* Light mode background */
+    @apply bg-slate-50 text-slate-900;
+    /* Dark mode background */
+    .dark & {
+      @apply bg-slate-900 text-slate-100;
+    }
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors;
+  }
+
+  .card {
+    @apply bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-300;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-slate-700 text-slate-900 dark:text-white transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-slate-500 hover:bg-slate-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md;
+  }
+
+  .btn-destructive {
+    @apply bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md;
+  }
+
+  /* Task item specific styles */
+  .task-item {
+    @apply bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-md border-l-4 transition-all duration-200;
+  }
+
+  .task-completed {
+    @apply border-l-green-500;
+  }
+
+  .task-pending {
+    @apply border-l-yellow-500;
+  }
+
+  .task-overdue {
+    @apply border-l-red-500;
+  }
+
+  /* Status badges */
+  .status-badge {
+    @apply px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .status-completed {
+    @apply bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300;
+  }
+
+  .status-pending {
+    @apply bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300;
+  }
+
+  .status-overdue {
+    @apply bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300;
+  }
+
+  /* Priority badges */
+  .priority-badge {
+    @apply px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1;
+  }
+
+  .priority-high {
+    @apply text-red-600 bg-red-100 dark:bg-red-900/30 dark:text-red-300;
+  }
+
+  .priority-medium {
+    @apply text-yellow-600 bg-yellow-100 dark:bg-yellow-900/30 dark:text-yellow-300;
+  }
+
+  .priority-low {
+    @apply text-green-600 bg-green-100 dark:bg-green-900/30 dark:text-green-300;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .container-center {
+    @apply flex items-center justify-center;
+  }
+
+  .container-between {
+    @apply flex items-center justify-between;
+  }
+
+  /* Smooth transitions for theme changes */
+  .theme-transition {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Custom scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(203 213 225) transparent;
+  }
+
+  .dark .scrollbar-thin {
+    scrollbar-color: rgb(51 65 85) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(203 213 225);
+    border-radius: 3px;
+  }
+
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(51 65 85);
+  }
+}
+
